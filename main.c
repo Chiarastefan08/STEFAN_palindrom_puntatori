@@ -1,24 +1,29 @@
 #include <stdio.h>
 
 int main(void) {
-    char testo[] = "i topi non avevano nipoti";
-    char *fine = testo;
-    char *inizio = testo;
-
+    char stringa[] = "i topi non avevano nipoti";
+    char *inizio = stringa;
+    char *fine = stringa;
     while (*fine != '\0') {
         fine++;
     }
-    fine--; //così teoricamente dovrebbe essere arrivato all'ultima cifra TEORICAMENTE
+    fine--;
 
     while (inizio <= fine) {
-        if (*inizio == ' ') {
+        while (*inizio == ' ') {
             inizio++;
         }
-        if (*fine == ' ') {
+        while (*fine == ' ') {
             fine--;
         }
+        if (*inizio != *fine) {
+            printf("Frase non palindroma");
+            return 0;
+        }
+        inizio++;
+        fine--;
     }
+    printf("Frase palindroma");
 
-
-
+    return 0;
 }
